@@ -1,5 +1,5 @@
 # DCGCN
-Code for the TACL paper Densely Connected Graph Convolutional Network for Graph-to-Sequence Learning
+Code for the TACL paper [Densely Connected Graph Convolutional Network for Graph-to-Sequence Learning](http://www.statnlp.org/wp-content/uploads/2019/03/DCGCN.pdf)
 
 ## Dependencies
 The model requires:
