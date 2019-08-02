@@ -1,6 +1,16 @@
 # DCGCN
 Code for the TACL paper [Densely Connected Graph Convolutional Network for Graph-to-Sequence Learning](http://www.statnlp.org/wp-content/uploads/2019/03/DCGCN.pdf)
 
+# Citation
+```
+@article{dcgcnforgraph2seq19guo, 
+title={Densely Connected Graph Convolutional Networks for Graph-to-Sequence Learning}, 
+author={Zhijiang Guo and Yan Zhang and Zhiyang Teng and Wei Lu}, 
+journal={Transactions of the Association of Computational Linguistics}, 
+year={2019}, 
+}
+```
+
 ## Dependencies
 The model requires:
 - **Python3**
