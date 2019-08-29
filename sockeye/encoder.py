@@ -28,8 +28,6 @@ from . import convolution
 from . import rnn
 from . import transformer
 from . import utils
-from . import grn
-from . import gat
 from . import gcn
 
 logger = logging.getLogger(__name__)
@@ -47,10 +45,6 @@ def get_encoder(config: 'EncoderConfig', prefix: str = '') -> 'Encoder':
         return get_convolutional_encoder(config, prefix)
     elif isinstance(config, EmptyEncoderConfig):
         return EncoderSequence([EmptyEncoder(config)], config.dtype)
-    elif isinstance(config, GatedGraphRecEncoderConfig):
-        return get_gatedgrn_encoder(config, prefix)
-    elif isinstance(config, GraphAttentionEncoderConfig):
-        return get_gat_encoder(config, prefix)
     elif isinstance(config, GraphConvolutionEncoderConfig):
         return get_gcn_encoder(config, prefix)
     else:
@@ -76,45 +70,6 @@ class RecurrentEncoderConfig(config.Config):
         self.rnn_config = rnn_config
         self.conv_config = conv_config
         self.reverse_input = reverse_input
-        self.dtype = dtype
-
-
-#GRN
-class GatedGraphRecEncoderConfig(config.Config):
-    def __init__(self,
-                 gatedgrn_config: grn.GatedGRNConfig,
-                 positional_embedding_type: str,
-                 num_embed: int,
-                 embed_dropout: float,
-                 pos_num_embed: int,
-                 max_seq_len: int,
-                 dtype: str = C.DTYPE_FP32) -> None:
-        super().__init__()
-        self.gatedgrn_config = gatedgrn_config
-        self.num_embed = num_embed
-        self.embed_dropout = embed_dropout
-        self.pos_num_embed = pos_num_embed
-        self.max_seq_len = max_seq_len
-        self.positional_embedding_type = positional_embedding_type
-        self.dtype = dtype
-
-
-class GraphAttentionEncoderConfig(config.Config):
-    def __init__(self,
-                 gat_config: gat.GATConfig,
-                 positional_embedding_type: str,
-                 num_embed: int,
-                 embed_dropout: float,
-                 pos_num_embed: int,
-                 max_seq_len: int,
-                 dtype: str = C.DTYPE_FP32) -> None:
-        super().__init__()
-        self.gat_config = gat_config
-        self.num_embed = num_embed
-        self.embed_dropout = embed_dropout
-        self.pos_num_embed = pos_num_embed
-        self.max_seq_len = max_seq_len
-        self.positional_embedding_type = positional_embedding_type
         self.dtype = dtype
 
 
@@ -252,54 +207,6 @@ def get_convolutional_encoder(config: ConvolutionalEncoderConfig, prefix: str) -
                                                            prefix=prefix + C.SOURCE_POSITIONAL_EMBEDDING_PREFIX)
     encoder_seq.append(cls, **encoder_params)
     encoder_seq.append(ConvolutionalEncoder, config=config)
-    return encoder_seq
-
-
-# GRN
-def get_gatedgrn_encoder(config: GatedGraphRecEncoderConfig, prefix: str) -> 'Encoder':
-    encoder_seq = EncoderSequence([], dtype=config.dtype)
-    cls, encoder_params = _get_positional_embedding_params(config.positional_embedding_type,
-                                                           config.pos_num_embed,
-                                                           max_seq_len=config.max_seq_len,
-                                                           embed_dropout=config.embed_dropout,
-                                                           fixed_pos_embed_scale_up_input=False,
-                                                           fixed_pos_embed_scale_down_positions=False,
-                                                           prefix=prefix + C.SOURCE_POSITIONAL_EMBEDDING_PREFIX)
-    encoder_seq.append(cls, **encoder_params)
-
-    new_gatedgrn_config = grn.GatedGRNConfig(input_dim=config.num_embed + config.pos_num_embed,
-                                             output_dim=config.gatedgrn_config.output_dim,
-                                             tensor_dim=config.gatedgrn_config.tensor_dim,
-                                             num_layers=config.gatedgrn_config.num_layers,
-                                             activation=config.gatedgrn_config.activation,
-                                             add_gate=config.gatedgrn_config.add_gate,
-                                             dropout=config.gatedgrn_config.dropout,
-                                             norm=config.gatedgrn_config.norm)
-
-    encoder_seq.append(GatedGraphRecEncoder, config=new_gatedgrn_config, prefix=C.GATEDGRN_PREFIX)
-
-    return encoder_seq
-
-
-def get_gat_encoder(config: GraphAttentionEncoderConfig, prefix: str) -> 'Encoder':
-    encoder_seq = EncoderSequence([], dtype=config.dtype)
-    cls, encoder_params = _get_positional_embedding_params(config.positional_embedding_type,
-                                                           config.pos_num_embed,
-                                                           max_seq_len=config.max_seq_len,
-                                                           embed_dropout=config.embed_dropout,
-                                                           fixed_pos_embed_scale_up_input=False,
-                                                           fixed_pos_embed_scale_down_positions=False,
-                                                           prefix=prefix + C.SOURCE_POSITIONAL_EMBEDDING_PREFIX)
-    encoder_seq.append(cls, **encoder_params)
-
-    new_gat_config = gat.GATConfig(config.num_embed + config.pos_num_embed,
-                                   output_dim=config.gat_config.output_dim,
-                                   tensor_dim=config.gat_config.tensor_dim,
-                                   activation=config.gat_config.activation,
-                                   dropout=config.gat_config.dropout)
-
-    encoder_seq.append(GraphAttentionEncoder, config=new_gat_config, prefix=C.GAT_PREFIX)
-
     return encoder_seq
 
 
@@ -1206,55 +1113,6 @@ class ConvolutionalEncoder(Encoder):
 
     def get_num_hidden(self) -> int:
         return self.config.cnn_config.num_hidden
-
-
-# GRN
-class GatedGraphRecEncoder(Encoder):
-
-    def __init__(self,
-                 config: grn.GatedGRNConfig,
-                 prefix: str = C.GATEDGRN_PREFIX) -> None:
-        super().__init__(config.dtype)
-        self._gatedgrn = grn.get_gatedgrn(config, prefix)
-        self._num_hidden = config.output_dim
-
-    def encode(self,
-               data: mx.sym.Symbol,
-               data_length: mx.sym.Symbol,
-               seq_len: int,
-               metadata=None) -> Tuple[mx.sym.Symbol, mx.sym.Symbol, int]:
-
-        adj = metadata[0]
-        outputs = self._gatedgrn.convolve(adj, data, seq_len)
-
-        return outputs, data_length, seq_len
-
-    def get_num_hidden(self) -> int:
-        return self._num_hidden
-
-
-class GraphAttentionEncoder(Encoder):
-
-    def __init__(self,
-                 config: gat.GATConfig,
-                 prefix: str = C.GAT_PREFIX):
-        super().__init__(config.dtype)
-        self._gat = gat.get_gat(config, prefix)
-        self._num_hidden = config.output_dim
-
-    def encode(self,
-               data: mx.sym.Symbol,
-               data_length: Optional[mx.sym.Symbol],
-               seq_len: int,
-               metadata=None):
-
-        adj = metadata[0]
-        outputs = self._gat.convolve(adj, data, seq_len)
-
-        return outputs, data_length, seq_len
-
-    def get_num_hidden(self) -> int:
-        return self._num_hidden
 
 
 class GraphConvolutionEncoder(Encoder):

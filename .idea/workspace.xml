@@ -1,0 +1,371 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="67a5eb59-4bac-48fd-824d-ac596d450be9" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/decode_amr15.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/eval_bleu.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/postprocess_amr.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pretrained/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/results/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sockeye/data/amr_2015/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sockeye/data/amr_2017/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sockeye/data/en2cs/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sockeye/data/en2de/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/train_amr15.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/amr_preprocess/amr.peg" beforeDir="false" afterPath="$PROJECT_DIR$/preprocess/amr_preprocess/amr.peg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/amr_preprocess/amr.py" beforeDir="false" afterPath="$PROJECT_DIR$/preprocess/amr_preprocess/amr.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/amr_preprocess/gen_amr.sh" beforeDir="false" afterPath="$PROJECT_DIR$/preprocess/amr_preprocess/gen_amr.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/amr_preprocess/global_node.py" beforeDir="false" afterPath="$PROJECT_DIR$/preprocess/amr_preprocess/global_node.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/amr_preprocess/ne_clusters.py" beforeDir="false" afterPath="$PROJECT_DIR$/preprocess/amr_preprocess/ne_clusters.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/amr_preprocess/plot_amr.py" beforeDir="false" afterPath="$PROJECT_DIR$/preprocess/amr_preprocess/plot_amr.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/amr_preprocess/preproc_amr.py" beforeDir="false" afterPath="$PROJECT_DIR$/preprocess/amr_preprocess/preproc_amr.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/amr_preprocess/split_amr.py" beforeDir="false" afterPath="$PROJECT_DIR$/preprocess/amr_preprocess/split_amr.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/nmt_preprocess.py" beforeDir="false" afterPath="$PROJECT_DIR$/preprocess/nmt_preprocess.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/decode.sh" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/finetune.sh" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sockeye/arguments.py" beforeDir="false" afterPath="$PROJECT_DIR$/sockeye/arguments.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sockeye/encoder.py" beforeDir="false" afterPath="$PROJECT_DIR$/sockeye/encoder.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sockeye/gat.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sockeye/gcn.py" beforeDir="false" afterPath="$PROJECT_DIR$/sockeye/gcn.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sockeye/grn.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sockeye/postprocess.py" beforeDir="false" afterPath="$PROJECT_DIR$/sockeye/postprocess.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sockeye/train.py" beforeDir="false" afterPath="$PROJECT_DIR$/sockeye/train.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/train.sh" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_ser.sh" beforeDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/train_amr15.sh">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="168">
+              <caret line="7" column="52" selection-start-line="7" selection-start-column="52" selection-end-line="7" selection-end-column="52" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/decode_amr15.sh">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="168">
+              <caret line="7" column="21" lean-forward="true" selection-start-line="7" selection-start-column="8" selection-end-line="7" selection-end-column="21" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/postprocess_amr.sh">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/README.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="FIRST">
+              <first_editor relative-caret-position="720">
+                <caret line="108" column="11" lean-forward="true" selection-start-line="108" selection-start-column="11" selection-end-line="108" selection-end-column="11" />
+              </first_editor>
+              <second_editor />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/eval_bleu.sh">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="48">
+              <caret line="2" column="72" selection-start-line="2" selection-start-column="72" selection-end-line="2" selection-end-column="72" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/sockeye/train.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1032">
+              <caret line="43" column="25" selection-start-line="43" selection-start-column="25" selection-end-line="43" selection-end-column="25" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/sockeye/encoder.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="768">
+              <caret line="46" column="68" selection-start-line="46" selection-start-column="68" selection-end-line="46" selection-end-column="68" />
+              <folding>
+                <element signature="e#616#630#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/sockeye/arguments.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="16176">
+              <caret line="683" column="59" selection-start-line="683" selection-start-column="59" selection-end-line="683" selection-end-column="59" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/sockeye/gcn.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1944">
+              <caret line="88" column="58" selection-start-line="88" selection-start-column="58" selection-end-line="88" selection-end-column="58" />
+              <folding>
+                <element signature="e#0#18#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/sockeye/postprocess.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1488">
+              <caret line="62" selection-start-line="62" selection-end-line="62" selection-end-column="24" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>grn</find>
+      <find>heads</find>
+    </findStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/decode.sh" />
+        <option value="$PROJECT_DIR$/sockeye/postprocess.py" />
+        <option value="$PROJECT_DIR$/eval_bleu.sh" />
+        <option value="$PROJECT_DIR$/train_amr15.sh" />
+        <option value="$PROJECT_DIR$/sockeye/train.py" />
+        <option value="$PROJECT_DIR$/sockeye/encoder.py" />
+        <option value="$PROJECT_DIR$/sockeye/arguments.py" />
+        <option value="$PROJECT_DIR$/sockeye/gcn.py" />
+        <option value="$PROJECT_DIR$/decode_amr15.sh" />
+        <option value="$PROJECT_DIR$/README.md" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectConfigurationFiles">
+    <option name="files">
+      <list>
+        <option value="$PROJECT_DIR$/.idea/DCGCN.iml" />
+        <option value="$PROJECT_DIR$/.idea/misc.xml" />
+        <option value="$PROJECT_DIR$/.idea/modules.xml" />
+        <option value="$PROJECT_DIR$/.idea/vcs.xml" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="7">
+    <option name="x" value="1321" />
+    <option name="y" value="32" />
+    <option name="width" value="1239" />
+    <option name="height" value="1408" />
+  </component>
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="DCGCN" type="b2602c69:ProjectViewProjectNode" />
+              <item name="DCGCN" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="DCGCN" type="b2602c69:ProjectViewProjectNode" />
+              <item name="DCGCN" type="462c0819:PsiDirectoryNode" />
+              <item name="images" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/results" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/sockeye" />
+      <recent name="$PROJECT_DIR$" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="67a5eb59-4bac-48fd-824d-ac596d450be9" name="Default Changelist" comment="" />
+      <created>1567078324399</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1567078324399</updated>
+      <workItem from="1567078325566" duration="3488000" />
+      <workItem from="1567082451171" duration="39000" />
+      <workItem from="1567082516411" duration="2531000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="6058000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="83" y="32" width="2477" height="1408" extended-state="6" />
+    <editor active="true" />
+    <layout>
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24989657" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.3296" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="8" />
+      <window_info anchor="bottom" id="Database Changes" order="9" />
+      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
+      <window_info anchor="bottom" id="Terminal" order="11" />
+      <window_info anchor="bottom" id="Python Console" order="12" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Remote Host" order="3" />
+      <window_info anchor="right" id="SciView" order="4" />
+      <window_info anchor="right" id="Database" order="5" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/finetune.sh" />
+    <entry file="file://$PROJECT_DIR$/merge.sh">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sockeye/gat.py" />
+    <entry file="file://$PROJECT_DIR$/postprocess_amr.sh">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/eval_bleu.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="48">
+          <caret line="2" column="72" selection-start-line="2" selection-start-column="72" selection-end-line="2" selection-end-column="72" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sockeye/train.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1032">
+          <caret line="43" column="25" selection-start-line="43" selection-start-column="25" selection-end-line="43" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sockeye/encoder.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="768">
+          <caret line="46" column="68" selection-start-line="46" selection-start-column="68" selection-end-line="46" selection-end-column="68" />
+          <folding>
+            <element signature="e#616#630#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sockeye/arguments.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="16176">
+          <caret line="683" column="59" selection-start-line="683" selection-start-column="59" selection-end-line="683" selection-end-column="59" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sockeye/gcn.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1944">
+          <caret line="88" column="58" selection-start-line="88" selection-start-column="58" selection-end-line="88" selection-end-column="58" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sockeye/postprocess.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1488">
+          <caret line="62" selection-start-line="62" selection-end-line="62" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/train_amr15.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="168">
+          <caret line="7" column="52" selection-start-line="7" selection-start-column="52" selection-end-line="7" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/decode_amr15.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="168">
+          <caret line="7" column="21" lean-forward="true" selection-start-line="7" selection-start-column="8" selection-end-line="7" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="FIRST">
+          <first_editor relative-caret-position="720">
+            <caret line="108" column="11" lean-forward="true" selection-start-line="108" selection-start-column="11" selection-end-line="108" selection-end-column="11" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

@@ -1,21 +1,25 @@
-# DCGCN
-Code for the TACL paper [Densely Connected Graph Convolutional Network for Graph-to-Sequence Learning](http://www.statnlp.org/wp-content/uploads/2019/03/DCGCN.pdf)
+# Densely Connected Graph Convolutional Networks for Graph-to-Sequence Learning
 
-# Citation
-```
-@article{dcgcnforgraph2seq19guo, 
-title={Densely Connected Graph Convolutional Networks for Graph-to-Sequence Learning}, 
-author={Zhijiang Guo and Yan Zhang and Zhiyang Teng and Wei Lu}, 
-journal={Transactions of the Association of Computational Linguistics}, 
-year={2019}, 
-}
-```
+This paper/code introduces the Densely Connected Graph Convolutional Networks (DCGCNs) for the graph-to-sequence learning task. We evaluate our model on two tasks including AMR-to-Text Generation (AMR2015 and AMR2017) and Syntax-Based Machine Translation (EN2DE and EN2CS).
+
+You can find the latest version of the TACL paper [here](http://www.statnlp.org/wp-content/uploads/2019/03/DCGCN.pdf).
+
+This paper is presented in ACL 2019, you can find the video [here](http://www.acl2019.org/EN/program.xhtml) in Session 6F: Machine Learning 4. Slides are also available for brief introduction of this work.
+
+See below for an overview of the encoder (DCGCNs) architecture: Each DCGCN block has two sub-blocks. Both of them are densely connected graph convolutional layers with different numbers (**n** & **m**) of layers. For these two tasks we use **n=6** and **m=3**. These are hyper-parameters. 
+
+![DCGCNs Architecture](images/encoder.png "DCGCNs Architecture")
+
+The densely connected graph convolutional layers are inspired by [DenseNets](https://arxiv.org/abs/1608.06993) and defined as follows: Here we use an AMR graph as an example.
+
+![Densely Connected Graph Convolutional Layers](images/dense_connectivity.png.png "Densely connected layers")
+
 
 ## Dependencies
 The model requires:
-- **Python3**
+- Python3
 - [MXNet 1.3.0](https://github.com/apache/incubator-mxnet/tree/1.3.0)
-- numpy
+- [Sockeye 1.18.56(NMT framework based on MXNet)](https://github.com/awslabs/sockeye)
 - CUDA (we tested on CUDA 9.2)
 
 ## Installation
@@ -30,9 +34,89 @@ Incubating contains the GPU bindings. Depending on your version of CUDA you can 
 ```
 where `${CUDA_VERSION}` can be `75` (7.5), `80` (8.0), `90` (9.0), `91` (9.1), or `92` (9.2).
 
+## Preprocessing
+
+We need to convert the dataset into extended Levi graphs for training. For details please refer to the paper.
+
+TODO
+
 ## Training
 
-The remaining new options are related to the new encoder, a Dense Graph Convolutional Network, which was abbreviated it as `gcn` in the API. Here is a list of options to train our model:
+To train the DCGCN model, run (here we use AMR2015 as an example):
+
+```
+./train_amr15.sh
+```
+
+Model checkpoints and logs will be saved to `./sockeye/amr2015_model`.
+
+## Decoding
+
+When we finish the training, we can use the trained model to decode on the test set, run:
+
+```
+./decode_amr15.sh
+```
+
+This will use the last checkpoint (84th for AMR2015) by default. Use `--checkpoints` to specify a model checkpoint file.
+
+## Postprocessing
+
+For AMR-to-Text generation, we also use the scope markers as in [Konstas et al. (2017)](https://arxiv.org/pdf/1704.08381.pdf) and [Beck et al. (2018)](https://arxiv.org/pdf/1806.09835.pdf). Basically, they conduct named entity anonymization and named entity clustering in the preprocessing stage.
+In the postprocessing state, we need to substitute the anonymized entities, run:
+
+```
+./postprocess_amr.sh
+
+```
+
+For Syntax-Based Machine Translation, we use BPE in the decoder side. In the postprocessing stage, we need to merge them into natural language sequence for evaluation. 
+
+TODO
+
+## Evaluation
+
+For BLEU score evaluation, run:
+
+```
+./eval_bleu.sh
+
+```
+
+## Citation
+```
+@article{guo-etal-2019-densely,
+    title = "Densely Connected Graph Convolutional Networks for Graph-to-Sequence Learning",
+    author = "Guo, Zhijiang and Zhang, Yan and Teng, Zhiyang and Lu, Wei",
+    journal = "Transactions of the Association for Computational Linguistics",
+    volume = "7",
+    month = mar,
+    year = "2019",
+    url = "https://www.aclweb.org/anthology/Q19-1019",
+    pages = "297--312"
+}
+```
+
+
+## Related Repo
+
+This repo is built based on [Graph-to-Sequence Learning using Gated Graph Neural Networks](https://github.com/beckdaniel/acl2018_graph2seq).
+DCGCNs can also be applied on other NLP tasks. For example, relation extraction: [Attention Guided Graph Convolutional Networks for Relation Extraction](https://github.com/Cartus/AGGCN_TACRED).
+
+
+## Results
+
+We also release the output of our model. Please refer to the **results** directory.
+
+## Pretrained Models
+
+We will released our 4 pretrained models on AMR2015, AMR2017, EN2DE and EN2CS datasets.
+
+TODO
+
+## Hyper-Parameters
+
+The remaining new options are related to the DCGCNs, which was abbreviated it as `gcn` in the API. Here is a list of options to train our model:
 
 `--source`: path to the file of the source sentences of the training set.
 
@@ -54,7 +138,7 @@ The remaining new options are related to the new encoder, a Dense Graph Convolut
 
 `--word-min-count`: for AMR generation task, we usually set it to 2:2. For NMT task, it should be 3:3. This is the minimum frequency of words to be included in vocabularies.
 
-`--num-embed`: for both tasks, we set it to 360:360. It is the embedding size for source and target tokens.
+`--num-embed`: for both tasks, we set it to 300:300. It is the embedding size for source and target tokens.
 
 `--gcn-pos-embed`: for both tasks, we set it to 300. It is the dimensionality of positional embeddings. We concat it with the word embeddings.
 
@@ -113,9 +197,6 @@ The remaining new options are related to the new encoder, a Dense Graph Convolut
 `--keep-last-params`: keep only the last 30 params files.
 
 `--fixed-param-names`: we fix the embedding while finetuning the model on the gold training data (for external dataset pretraining).
-
-
-## Decoding
 
 Here is a list of options to use the saved model to decode:
 

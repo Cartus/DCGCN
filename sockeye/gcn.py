@@ -74,16 +74,19 @@ class GCNCell(object):
             self._input_b = mx.symbol.Variable(self._prefix + '_input_bias',
                                                shape=(output_dim,))
 
+        # For these two tasks AMR-to-Text Generation and Syntax-Based NMT, the number of layers in the two sub-blocks are 6 and 3
+        # Actually, these numbers are hyperparameters, you can choose other sizes. For example, you can choose 4 and 2 for relation extraction
+        # Attention Guided Graph Convolutional Networks for Relation Extraction (ACL2019) https://arxiv.org/abs/1906.07510
         for i in range(self._num_layers):
             self._layers.append(GraphConvolution(prefix="%s%d_6_" % (self._prefix, i),
-                                                 heads=6,
+                                                 sublayers=6,
                                                  output_dim=self._output_dim,
                                                  directions=self._directions,
                                                  dropout=self._dropout,
                                                  norm=self._norm,
                                                  activation=self._activation))
             self._layers.append(GraphConvolution(prefix="%s%d_3_" % (self._prefix, i),
-                                                 heads=3,
+                                                 sublayers=3,
                                                  output_dim=self._output_dim,
                                                  directions=self._directions,
                                                  dropout=self._dropout,
@@ -122,7 +125,7 @@ class GraphConvolution:
 
     def __init__(self,
                  prefix: str,
-                 heads: int,
+                 sublayers: int,
                  output_dim: int,
                  directions: int,
                  dropout: float,
@@ -130,12 +133,12 @@ class GraphConvolution:
                  activation: str = 'relu'):
 
         self._prefix = prefix
-        self._heads = heads
+        self._sublayers = sublayers
         self._output_dim = output_dim
         self._directions = directions
-        utils.check_condition(output_dim % heads == 0,
-                              "Number of heads (%d) must divide attention depth (%d)" % (heads, output_dim))
-        self._hidden_dim = self._output_dim // self._heads
+        utils.check_condition(output_dim % sublayers == 0,
+                              "Number of sub-layers (%d) must divide attention depth (%d)" % (sublayers, output_dim))
+        self._hidden_dim = self._output_dim // self._sublayers
         self._dropout = dropout
         self._norm = norm
         self._activation = activation
@@ -143,7 +146,7 @@ class GraphConvolution:
         self._bias_list = []
 
         # Graph Convolution Params
-        for i in range(heads):
+        for i in range(sublayers):
             self._weight_list.append([mx.symbol.Variable(self._prefix + "_dense_" + str(i) + "_" + str(j) + "_weight",
                                                          shape=(self._output_dim + self._hidden_dim * i, self._hidden_dim))
                                       for j in range(self._directions)])
@@ -154,18 +157,18 @@ class GraphConvolution:
         # Attention Params
         self._att_1_W = [mx.symbol.Variable(self._prefix + str(i) + '_att_1_weight',
                                             shape=(self._hidden_dim, 1))
-                         for i in range(self._heads * self._directions)]
+                         for i in range(self._sublayers * self._directions)]
         self._att_2_W = [mx.symbol.Variable(self._prefix + str(i) + '_att_2_weight',
                                             shape=(self._hidden_dim, 1))
-                         for i in range(self._heads * self._directions)]
+                         for i in range(self._sublayers * self._directions)]
 
         # Direction Params
         self._direct_W = [mx.symbol.Variable(self._prefix + str(i) + '_direct_weight',
                                              shape=(self._directions * self._hidden_dim, self._hidden_dim))
-                          for i in range(self._heads)]
+                          for i in range(self._sublayers)]
         self._direct_b = [mx.symbol.Variable(self._prefix + str(i) + '_direct_bias',
                                              shape=(self._hidden_dim,))
-                          for i in range(self._heads)]
+                          for i in range(self._sublayers)]
 
         # Linear Transform Params
         self._linear_W = mx.symbol.Variable(self._prefix + '_linear_weight',
@@ -177,7 +180,7 @@ class GraphConvolution:
         outputs = inputs
         cache_list = [outputs]
         output_list = []
-        for i in range(self._heads):
+        for i in range(self._sublayers):
             convolved = self._convolve(adj, outputs, i)
             cache_list.append(convolved)
             outputs = mx.sym.concat(*cache_list, dim=2)

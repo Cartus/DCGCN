@@ -683,56 +683,6 @@ def add_model_parameters(params):
                                    'For example: n:drn '
                                    'Default: %(default)s.')
 
-    # GRN arguments
-    model_params.add_argument('--grn-edge-gating', action="store_true",
-                              help="Activate edge gating for the GRN encoder (use only with --use-grn). Default: %(default)s")
-    model_params.add_argument('--grn-num-layers', type=int_greater_or_equal(1),
-                              default=1,
-                              help="Number of layers for GRN encoder (use only with --use-grn). Default: %(default)s.")
-    model_params.add_argument('--grn-activation', type=str,
-                              default='relu',
-                              help="Activation function to be used inside the GRN convolutions")
-    model_params.add_argument('--grn-positional-embedding-type',
-                              choices=C.POSITIONAL_EMBEDDING_TYPES,
-                              default=C.GRAPH_POSITIONAL_EMBEDDING,
-                              help='The type of positional embedding. Default: %(default)s.')
-    model_params.add_argument('--grn-num-hidden',
-                              type=int_greater_or_equal(1),
-                              default=512,
-                              help='Number of GRN hidden units for encoder (use only with --use-grn). Default: %(default)s.')
-    model_params.add_argument('--grn-dropout', type=float,
-                              default=0.0,
-                              help="Dropout rate on the GRN output vectors.")
-    model_params.add_argument('--grn-norm', action="store_true",
-                              help="Normalize hidden vector calculations in GRN. Default: %(default)s")
-    model_params.add_argument('--grn-pos-embed',
-                              type=int_greater_or_equal(1),
-                              default=32,
-                              help='Dimensionality of positional embeddings (use only with --use-grn). Default: %(default)s.')
-    #####
-    # GAT
-    model_params.add_argument('--gat-residual',
-                              action="store_true",
-                              help="Activate residual connections between GCN layers. Ignored if GCN layers < 2")
-    model_params.add_argument('--gat-activation', type=str,
-                              default='relu',
-                              help="Activation function to be used inside the GCN convolutions")
-    model_params.add_argument('--gat-dropout', type=float,
-                              default=0.0,
-                              help="Dropout rate on the GCN output vectors.")
-    model_params.add_argument('--gat-num-hidden',
-                              type=int_greater_or_equal(1),
-                              default=512,
-                              help='Number of GCN hidden units for encoder (use only with --use-gcn). Default: %(default)s.')
-    model_params.add_argument('--gat-positional-embedding-type',
-                              choices=C.POSITIONAL_EMBEDDING_TYPES,
-                              default=C.GRAPH_POSITIONAL_EMBEDDING,
-                              help='The type of positional embedding. Default: %(default)s.')
-    model_params.add_argument('--gat-pos-embed',
-                              type=int_greater_or_equal(1),
-                              default=32,
-                              help='Dimensionality of positional embeddings (use only with --use-grn). Default: %(default)s.')
-
     #####
     # GCN
     model_params.add_argument('--gcn-activation',

@@ -1,3 +1,9 @@
+import sys
+
+
+map_file = sys.argv[1]
+raw_test_file = sys.argv[2]
+output_file = sys.argv[3]
 
 date_set = ('year_0_number', 'year_1_number', 'year_2_number', 'year_3_number', 'month_0_number', 'month_0_name', 'month_1_name', 'day_0_number', 'day_1_number')
 
@@ -26,7 +32,7 @@ def replace_date(tok):
 
 
 mapping_list = list()
-with open('data/silver/map.pp.txt') as f:
+with open(map_file) as f:
     map_list = f.readlines()
     print(len(map_list))
     for line in map_list:
@@ -54,11 +60,9 @@ with open('data/silver/map.pp.txt') as f:
         else:
             mapping_list.append([])
 
-# print(mapping_list)
 print(len(mapping_list))
-# exit()
 
-with open('data/silver/test.snt.out') as f:
+with open(raw_test_file) as f:
     output_list = f.readlines()
     all_sent_list = list()
     for index, line in enumerate(output_list):
@@ -82,7 +86,7 @@ with open('data/silver/test.snt.out') as f:
         # print(new_sent)
         all_sent_list.append(new_sent)
 
-with open('data/silver/final.txt', 'w') as out:
+with open(output_file, 'w') as out:
     for sent in all_sent_list:
         out.write(sent)
 

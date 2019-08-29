@@ -42,8 +42,6 @@ from sockeye import training
 from sockeye import transformer
 from sockeye import utils
 from sockeye import vocab
-from sockeye import grn
-from sockeye import gat
 from sockeye import gcn
 from sockeye.config import Config
 from sockeye.log import setup_main_logger
@@ -449,23 +447,6 @@ def create_encoder_config(args: argparse.Namespace,
 
         encoder_num_hidden = args.cnn_num_hidden
 
-    elif args.encoder == C.GRN_TYPE:
-        config_encoder = encoder.GatedGraphRecEncoderConfig(
-            gatedgrn_config=grn.GatedGRNConfig(input_dim=num_embed_source,
-                                               output_dim=args.grn_num_hidden,
-                                               tensor_dim=vocab_edge_size,
-                                               num_layers=args.grn_num_layers,
-                                               activation=args.grn_activation,
-                                               add_gate=args.grn_edge_gating,
-                                               dropout=args.grn_dropout,
-                                               norm=args.grn_norm),
-            num_embed=num_embed_source,
-            pos_num_embed=args.grn_pos_embed,
-            max_seq_len=max_seq_len_source,
-            positional_embedding_type=args.grn_positional_embedding_type,
-        )
-        encoder_num_hidden = args.grn_num_hidden
-
     else:
         encoder_rnn_dropout_inputs, _ = args.rnn_dropout_inputs
         encoder_rnn_dropout_states, _ = args.rnn_dropout_states
@@ -494,40 +475,7 @@ def create_graph_encoder_config(args: argparse.Namespace,
     num_embed_source, _ = args.num_embed
     encoder_embed_dropout, _ = args.embed_dropout
 
-    if args.encoder == C.GRN_TYPE:
-        config_encoder = encoder.GatedGraphRecEncoderConfig(
-            gatedgrn_config=grn.GatedGRNConfig(input_dim=num_embed_source,
-                                               output_dim=args.grn_num_hidden,
-                                               tensor_dim=vocab_edge_size,
-                                               num_layers=args.grn_num_layers,
-                                               activation=args.grn_activation,
-                                               add_gate=args.grn_edge_gating,
-                                               dropout=args.grn_dropout,
-                                               norm=args.grn_norm),
-            num_embed=num_embed_source,
-            embed_dropout=encoder_embed_dropout,
-            pos_num_embed=args.grn_pos_embed,
-            max_seq_len=max_seq_len_source,
-            positional_embedding_type=args.grn_positional_embedding_type,
-        )
-        encoder_num_hidden = args.grn_num_hidden
-
-    elif args.encoder == C.GAT_TYPE:
-        config_encoder = encoder.GraphAttentionEncoderConfig(
-            gat_config=gat.GATConfig(input_dim=num_embed_source,
-                                     output_dim=args.gat_num_hidden,
-                                     tensor_dim=vocab_edge_size,
-                                     activation=args.gat_activation,
-                                     dropout=args.gat_dropout),
-            positional_embedding_type=args.gat_positional_embedding_type,
-            num_embed=num_embed_source,
-            embed_dropout=encoder_embed_dropout,
-            pos_num_embed=args.gat_pos_embed,
-            max_seq_len=max_seq_len_source
-        )
-        encoder_num_hidden = args.gat_num_hidden
-
-    elif args.encoder == C.GCN_TYPE:
+    if args.encoder == C.GCN_TYPE:
         config_encoder = encoder.GraphConvolutionEncoderConfig(
             gcn_config=gcn.GCNConfig(input_dim=num_embed_source,
                                      output_dim=args.gcn_num_hidden,

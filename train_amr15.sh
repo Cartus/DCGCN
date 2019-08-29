@@ -1,26 +1,26 @@
 #!/usr/bin/env bash
-python3 -m sockeye.train --source sockeye/data/silver/mix.amr \
-        --target sockeye/data/silver/mix.snt \
-        --source-graphs sockeye/data/silver/mix.grh \
-        --validation-source sockeye/data/silver/test.amr \
-        --validation-target sockeye/data/silver/test.snt \
-        --val-source-graphs sockeye/data/silver/test.grh \
-        --edge-vocab sockeye/data/silver/edge_vocab.json \
-        --batch-size 30 \
+python3 -m sockeye.train --source data/amr_2015/train.amr \
+        --target data/amr_2015/train.snt \
+        --source-graphs data/amr_2015/train.grh \
+        --validation-source data/amr_2015/dev.amr \
+        --validation-target data/amr_2015/dev.snt \
+        --val-source-graphs data/amr_2015/dev.grh \
+        --edge-vocab data/amr_2015/edge_vocab.json \
+        --batch-size 16 \
         --batch-type sentence \
-        --word-min-count 3:3 \
-        --num-embed 360:360 \
+        --word-min-count 2:2 \
+        --num-embed 300:300 \
         --embed-dropout .5:.5 \
-        --max-seq-len 169:169 \
+        --max-seq-len 199:199 \
         --encoder gcn \
         --gcn-activation relu \
         --gcn-num-hidden 360 \
         --gcn-pos-embed 300 \
         --decoder rnn \
-        --num-layers 1:2 \
-        --rnn-num-hidden 360 \
+        --num-layers 4:1 \
+        --rnn-num-hidden 300 \
         --rnn-decoder-hidden-dropout 0.2 \
-        --checkpoint-frequency 1500 \
+        --checkpoint-frequency 1000 \
         --max-num-checkpoint-not-improved 28 \
         --initial-learning-rate 0.0003 \
         --learning-rate-reduce-factor 0.7 \
@@ -29,13 +29,12 @@ python3 -m sockeye.train --source sockeye/data/silver/mix.amr \
         --weight-init-xavier-factor-type in \
         --weight-init-scale 2.34 \
         --decode-and-evaluate -1 \
-        --output sockeye/silver_model \
+        --output amr2015_model \
         --overwrite-output \
-        --device-ids 0 \
+        --device-ids 1 \
         --gcn-dropout 0.1 \
         --gcn-adj-norm \
         --rnn-attention-type coverage \
         --shared-vocab \
         --weight-tying \
         --weight-tying-type src_trg
-
