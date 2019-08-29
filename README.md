@@ -19,7 +19,7 @@ The densely connected graph convolutional layers are inspired by [DenseNets](htt
 The model requires:
 - Python3
 - [MXNet 1.3.0](https://github.com/apache/incubator-mxnet/tree/1.3.0)
-- [Sockeye 1.18.56(NMT framework based on MXNet)](https://github.com/awslabs/sockeye)
+- [Sockeye 1.18.56 (NMT framework based on MXNet)](https://github.com/awslabs/sockeye)
 - CUDA (we tested on CUDA 9.2)
 
 ## Installation
