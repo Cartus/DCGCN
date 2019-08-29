@@ -67,7 +67,6 @@ In the postprocessing state, we need to substitute the anonymized entities, run:
 
 ```
 ./postprocess_amr.sh
-
 ```
 
 For Syntax-Based Machine Translation, we use BPE in the decoder side. In the postprocessing stage, we need to merge them into natural language sequence for evaluation. 
@@ -80,7 +79,6 @@ For BLEU score evaluation, run:
 
 ```
 ./eval_bleu.sh
-
 ```
 
 ## Citation
