@@ -1,12 +1,12 @@
 # Densely Connected Graph Convolutional Networks for Graph-to-Sequence Learning
 
-This paper/code introduces the Densely Connected Graph Convolutional Networks (DCGCNs) for the graph-to-sequence learning task. We evaluate our model on two tasks including AMR-to-Text Generation (AMR2015 and AMR2017) and Syntax-Based Machine Translation (EN2DE and EN2CS).
+This paper/code introduces the Densely Connected Graph Convolutional Networks (DCGCNs) for the graph-to-sequence learning task. We evaluate our model on two tasks including **AMR-to-Text Generation** (AMR2015 and AMR2017) and **Syntax-Based Machine Translation** (EN2DE and EN2CS).
 
 You can find the latest version of the TACL paper [here](http://www.statnlp.org/wp-content/uploads/2019/03/DCGCN.pdf).
 
 This paper is presented in ACL 2019, you can find the video [here](http://www.acl2019.org/EN/program.xhtml) in Session 6F: Machine Learning 4. Slides are also available (under the images directory) for brief introduction of this work.
 
-See below for an overview of the encoder (DCGCNs) architecture: Each DCGCN block has two sub-blocks. Both of them are densely connected graph convolutional layers with different numbers (**n** & **m**) of layers. For these two tasks we use **n=6** and **m=3**. These are hyper-parameters. 
+See below for an overview of the encoder (DCGCNs) architecture: Each block **has two sub-blocks**. Both of them are densely connected graph convolutional layers with different numbers (**n** & **m**) of layers. For these two tasks we use **n=6** and **m=3**. These are hyper-parameters. 
 
 ![DCGCNs Architecture](images/encoder.png "DCGCNs Architecture")
 
