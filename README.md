@@ -8,7 +8,7 @@ This paper is presented in ACL 2019, you can find the video [here](http://www.ac
 
 See below for an overview of the encoder (DCGCNs) architecture: Each block **has two sub-blocks**. Both of them are densely connected graph convolutional layers with different numbers (**n** & **m**) of layers. For these two tasks we use **n=6** and **m=3**. These are hyper-parameters. 
 
-![DCGCNs Architecture](images/encoder.png "DCGCNs Architecture")
+!<div align=center>[DCGCNs Architecture](images/encoder.png "DCGCNs Architecture")</div>
 
 The densely connected graph convolutional layers are inspired by [DenseNets](https://arxiv.org/abs/1608.06993) and defined as follows: Here we use an AMR graph as an example.
 
