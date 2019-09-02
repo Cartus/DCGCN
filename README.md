@@ -10,10 +10,6 @@ See below for an overview of the encoder (DCGCNs) architecture: Each block **has
 
 ![Densely Connected Graph Convolutional Layers](images/encoder.png "Densely connected layers")
 
-The densely connected graph convolutional layers are inspired by [DenseNets](https://arxiv.org/abs/1608.06993) and defined as follows: Here we use an AMR graph as an example.
-
-![Densely Connected Graph Convolutional Layers](images/dc.png "Densely connected layers")
-
 
 ## Dependencies
 The model requires:
