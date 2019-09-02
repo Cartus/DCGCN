@@ -91,6 +91,13 @@ For BLEU score evaluation, run:
 }
 ```
 
+## Pretrained Models
+
+For pretrained models, please download the models [here](https://drive.google.com/drive/folders/1QTWRTnQjDnnREeS1DCxMg46yTadl0A-e?usp=sharing)
+
+After the download, unzip the file and put it under the sockeye directory.
+
+For the AMR2015 dataset, the pretrained model achieves 25.9 BLEU score, while for the AMR2017 dataset, it achieves 27.9 BLEU score. You can train the model by yourself, the hyperparameters are given. The results should be the same.
 
 ## Related Repo
 
@@ -102,9 +109,7 @@ DCGCNs can also be applied on other NLP tasks. For example, relation extraction:
 
 We also release the output of our model. Please refer to the **results** directory.
 
-## Pretrained Models
 
-We will released our 4 pretrained models on AMR2015, AMR2017, EN2DE and EN2CS datasets.
 
 TODO
 
