@@ -1,0 +1,40 @@
+#!/usr/bin/env bash
+--source data/silver/train.amr
+--target data/silver/train.snt
+--source-graphs data/silver/train.grh
+--validation-source data/silver/test.amr
+--validation-target data/silver/test.snt
+--val-source-graphs data/silver/test.grh
+--edge-vocab data/silver/edge_vocab.json
+--source-vocab silver_model/vocab.src.0.json
+--target-vocab silver_model/vocab.trg.0.json
+--batch-size 16
+--batch-type sentence
+--num-embed 360:360
+--fixed-param-names source_pos_embed_weight source_target_embed_weight target_output_bias target_output_weight
+--max-seq-len 159:159
+--encoder gcn
+--gcn-activation relu
+--gcn-num-hidden 360
+--gcn-pos-embed 360
+--decoder rnn
+--num-layers 1:2
+--rnn-num-hidden 360
+--rnn-decoder-hidden-dropout 0.2
+--checkpoint-frequency 1000
+--max-num-checkpoint-not-improved 10
+--initial-learning-rate 0.0001
+--learning-rate-reduce-factor 0.7
+--learning-rate-reduce-num-not-improved 5
+--gcn-num-layers 4
+--decode-and-evaluate -1
+--output fine_model
+--params silver_model/params.best
+--overwrite-output
+--device-ids 0
+--gcn-dropout 0.1
+--gcn-adj-norm
+--rnn-attention-type coverage
+--shared-vocab
+--weight-tying
+--weight-tying-type src_trg

@@ -695,7 +695,7 @@ def add_model_parameters(params):
                               help="Dropout rate on the GCN output vectors.")
     model_params.add_argument('--gcn-num-hidden',
                               type=int_greater_or_equal(1),
-                              default=512,
+                              default=360,
                               help='Number of GCN hidden units for encoder (use only with --use-gcn). Default: %(default)s.')
     model_params.add_argument('--gcn-num-layers',
                               type=int_greater_or_equal(1),
@@ -710,7 +710,7 @@ def add_model_parameters(params):
                               help='The type of positional embedding. Default: %(default)s.')
     model_params.add_argument('--gcn-pos-embed',
                               type=int_greater_or_equal(1),
-                              default=32,
+                              default=300,
                               help='Dimensionality of positional embeddings (use only with --use-grn). Default: %(default)s.')
 
     # LHUC

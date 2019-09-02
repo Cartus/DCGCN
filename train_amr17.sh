@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
-python3 -m sockeye.train --source sockeye/data/amr_2015/train.amr \
-        --target sockeye/data/amr_2015/train.snt \
-        --source-graphs sockeye/data/amr_2015/train.grh \
-        --validation-source sockeye/data/amr_2015/dev.amr \
-        --validation-target sockeye/data/amr_2015/dev.snt \
-        --val-source-graphs sockeye/data/amr_2015/dev.grh \
-        --edge-vocab sockeye/data/amr_2015/edge_vocab.json \
+python3 -m sockeye.train --source sockeye/data/amr_2017/train.amr \
+        --target sockeye/data/amr_2017/train.snt \
+        --source-graphs sockeye/data/amr_2017/train.grh \
+        --validation-source sockeye/data/amr_2017/dev.amr \
+        --validation-target sockeye/data/amr_2017/dev.snt \
+        --val-source-graphs sockeye/data/amr_2017/dev.grh \
+        --edge-vocab sockeye/data/amr_2017/edge_vocab.json \
         --batch-size 16 \
         --batch-type sentence \
         --word-min-count 2:2 \
@@ -17,7 +17,7 @@ python3 -m sockeye.train --source sockeye/data/amr_2015/train.amr \
         --gcn-num-hidden 360 \
         --gcn-pos-embed 300 \
         --decoder rnn \
-        --num-layers 4:1 \
+        --num-layers 3:1 \
         --rnn-num-hidden 300 \
         --rnn-decoder-hidden-dropout 0.2 \
         --checkpoint-frequency 1000 \
@@ -25,11 +25,11 @@ python3 -m sockeye.train --source sockeye/data/amr_2015/train.amr \
         --initial-learning-rate 0.0003 \
         --learning-rate-reduce-factor 0.7 \
         --learning-rate-reduce-num-not-improved 5 \
-        --gcn-num-layers 4 \
+        --gcn-num-layers 3 \
         --weight-init-xavier-factor-type in \
         --weight-init-scale 2.34 \
         --decode-and-evaluate -1 \
-        --output sockeye/amr2015_model \
+        --output sockeye/amr2017_model \
         --overwrite-output \
         --device-ids 1 \
         --gcn-dropout 0.1 \

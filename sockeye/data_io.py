@@ -530,18 +530,22 @@ class RawParallelDatasetLoader:
         # logger.info("BUCKET SIZE: %d", bucket_size)
         new_src_graphs = np.array([np.zeros((bucket_size, bucket_size)) for sent in range(batch_size)])
         for i, graph in enumerate(data_src_graphs):
+            # print(graph)
             global_index = 0
             for tup in graph:
+                # new_src_graphs[i][tup[0]][tup[1]] = tup[2]
                 new_src_graphs[i][tup[0]][tup[1]] = tup[2] + 1
                 # Get the id for self label
                 if tup[0] == tup[1]:
                     self_id = tup[2] + 1
                 if tup[0] > global_index:
                     global_index = tup[0]
+            # print(new_src_graphs[i])
             global_index_list.append(global_index)
             # Populate diagonal, need this because pad symbols need to have a self loop
             for j in range(bucket_size):
                 new_src_graphs[i][j][j] = self_id
+            # print(new_src_graphs)
         return new_src_graphs, global_index_list
 
     def _get_graph_positions(self, bucket_size, data_src_graphs, global_index_list):
