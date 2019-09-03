@@ -40,10 +40,10 @@ Here, for AMR-to-text, get the AMR Sembank (LDC2017T10) first and put the folder
 ./gen_amr.sh
 ```
 
-For NMT, get the dataset from here https://drive.google.com/drive/folders/0BxGk3yrG1HHVMy1aYTNld3BIN2s first and change the repository folder inside preprocess_nmt.py. Then run:
+For NMT, get the dataset from here https://drive.google.com/drive/folders/0BxGk3yrG1HHVMy1aYTNld3BIN2s first and change the data folder inside nmt_preprocess.py. Then run:
 
 ```
-python preprocess_nmt.py
+python nmt_preprocess.py
 ```
 
 ## Training
