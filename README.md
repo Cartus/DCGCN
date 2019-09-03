@@ -58,7 +58,7 @@ This will use the last checkpoint (84th for AMR2015) by default. Use `--checkpoi
 
 ## Postprocessing
 
-For AMR-to-Text generation, we also use the scope markers as in [Konstas et al. (2017)](https://arxiv.org/pdf/1704.08381.pdf) and [Beck et al. (2018)](https://arxiv.org/pdf/1806.09835.pdf). Basically, they conduct named entity anonymization and named entity clustering in the preprocessing stage.
+For AMR-to-Text generation, we also use the scope markers as in [Konstas et al. (2017)](https://arxiv.org/pdf/1704.08381.pdf) and [Beck et al. (2018)](https://arxiv.org/pdf/1806.09835.pdf). Basically, they conduct named entity anonymization and named entity clustering in the preprocessing stage. Here, running gen_amr.sh can get the preprocessed AMR corpus.
 In the postprocessing state, we need to substitute the anonymized entities, run:
 
 ```
