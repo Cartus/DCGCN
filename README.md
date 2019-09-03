@@ -34,10 +34,16 @@ where `${CUDA_VERSION}` can be `75` (7.5), `80` (8.0), `90` (9.0), `91` (9.1), o
 
 We need to convert the dataset into extended Levi graphs for training. For details please refer to the paper.
 
-Here, For AMR-to-text, get the AMR Sembank (LDC2017T10) first and put the folder called abstract_meaning_representation_amr_2.0 inside the data folder. Then run:
+Here, for AMR-to-text, get the AMR Sembank (LDC2017T10) first and put the folder called abstract_meaning_representation_amr_2.0 inside the data folder. Then run:
 
 ```
 ./gen_amr.sh
+```
+
+For NMT, get the dataset from here https://drive.google.com/drive/folders/0BxGk3yrG1HHVMy1aYTNld3BIN2s first and change the repository folder inside preprocess_nmt.py. Then run:
+
+```
+python preprocess_nmt.py
 ```
 
 ## Training
