@@ -46,7 +46,7 @@ For NMT, you can download the raw dataset from [here](https://drive.google.com/d
 python nmt_preprocess.py
 ```
 
-Or you can download our preprocessed dataset for DCGCN model from [here](https://drive.google.com/drive/folders/1QTWRTnQjDnnREeS1DCxMg46yTadl0A-e?usp=sharing). For AMR corpurs, it has LDC license so we cannot distribute the preprocessed data. If you have the license, feel free to drop us an email to get the preprocessed data.
+Or you can download our preprocessed dataset (en2cs and en2de) for DCGCN model from [here](https://drive.google.com/drive/folders/1QTWRTnQjDnnREeS1DCxMg46yTadl0A-e?usp=sharing). For AMR corpus, it has LDC license so we cannot distribute the preprocessed data. If you have the license, feel free to drop us an email to get the preprocessed data.
 
 ## Training
 
