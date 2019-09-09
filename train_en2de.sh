@@ -1,0 +1,37 @@
+#!/usr/bin/env bash
+python3 -m sockeye.train --source data/en2cs/train.en.tok \
+        --target data/en2cs/train.BPE.de.tok \
+        --source-graphs data/en2cs/train.en.deps \
+        --validation-source data/en2cs/val.en.tok \
+        --validation-target data/en2cs/val.BPE.de.tok \
+        --val-source-graphs data/en2cs/val.en.deps \
+        --edge-vocab data/en2cs/edge_vocab.json \
+        --batch-size 24 \
+        --batch-type sentence \
+        --word-min-count 3:3 \
+        --num-embed 360:360 \
+        --embed-dropout .5:.5 \
+        --max-seq-len 199:199 \
+        --encoder gcn \
+        --gcn-activation relu \
+        --gcn-num-hidden 360 \
+        --gcn-pos-embed 360 \
+        --decoder rnn \
+        --num-layers 2:2 \
+        --rnn-num-hidden 360 \
+        --rnn-decoder-hidden-dropout 0.2 \
+        --checkpoint-frequency 1500 \
+        --max-num-checkpoint-not-improved 28 \
+        --initial-learning-rate 0.0003 \
+        --learning-rate-reduce-factor 0.7 \
+        --learning-rate-reduce-num-not-improved 7 \
+        --gcn-num-layers 2 \
+        --weight-init-xavier-factor-type in \
+        --weight-init-scale 2.34 \
+        --decode-and-evaluate 300 \
+        --output en2de_model \
+        --overwrite-output \
+        --device-ids 0 \
+        --gcn-dropout 0.1 \
+        --gcn-adj-norm \
+        --rnn-attention-type coverage

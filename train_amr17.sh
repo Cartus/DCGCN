@@ -37,5 +37,4 @@ python3 -m sockeye.train --source sockeye/data/amr_2017/train.amr \
         --rnn-attention-type coverage \
         --shared-vocab \
         --weight-tying \
-        --weight-tying-type src_trg \
-        --seed 7
+        --weight-tying-type src_trg

@@ -458,7 +458,7 @@ def add_prepare_data_cli_args(params):
 
     params.add_argument('--seed',
                         type=int,
-                        default=13,
+                        default=7,
                         help='Random seed used that makes shard assignments deterministic. Default: %(default)s.')
 
     params.add_argument('--output', '-o',
