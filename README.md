@@ -124,5 +124,3 @@ DCGCNs can also be applied on other NLP tasks. For example, relation extraction:
 
 We also release the output of our model. Please refer to the **results** directory.
 
-TODO
-
