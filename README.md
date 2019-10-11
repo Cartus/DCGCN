@@ -122,5 +122,5 @@ DCGCNs can also be applied on other NLP tasks. For example, relation extraction:
 
 ## Results
 
-We also release the output of our model. Please refer to the **results** directory.
+We also release the output of our model for **AMR2015 and AMR2017 dataset (both dev and test set)**. Please refer to the **results** directory.
 
